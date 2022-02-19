@@ -10,7 +10,6 @@ function Header(props) {
     backgroundColor: 'rgb(221, 221, 221)',
     textAlign: 'center',
     fontWeight: 'bold',
-    position: 'relative'
   }
 
   const h1Styles = {
