@@ -2,6 +2,10 @@
   padding-top: 110px;
 }
 
+.search-bar input {
+  width: 320px;
+}
+
 .search-bar input:focus {
   outline: none;
 }
@@ -32,6 +36,10 @@
   
   .search-bar {
     padding-top: 60px;
+  }
+
+  .search-bar input {
+    width: 360px;
   }
 }
 
