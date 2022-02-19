@@ -13,10 +13,19 @@ function SearchBar(props) {
       setSearchTerm("");
     }
   }
+
+  const inputStyles = {
+    padding: '18px',
+    borderRadius: '30px',
+    border: 'none',
+    width: '350px',
+    fontSize: '18px'
+  }
   
   return (
     <div className="search-bar"> 
       <input
+        style={inputStyles}
         type="text"
         value={searchTerm}
         placeholder="Search...."  

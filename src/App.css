@@ -1,0 +1,37 @@
+.search-bar {
+  padding-top: 110px;
+}
+
+.search-bar input:focus {
+  outline: none;
+}
+
+
+.job {
+  color: white; 
+}
+
+.white, .light-blue, .yellow {
+  color: black;
+}
+
+.lg-screens-only {
+  display: none;
+}
+
+/* Media Queries */
+@media only screen and (min-width: 1200px) {
+  .job {
+    border-radius: 10px;
+    margin: 10px;
+  }
+  
+  .lg-screens-only {
+    display: block;
+  }
+  
+  .search-bar {
+    padding-top: 60px;
+  }
+}
+
