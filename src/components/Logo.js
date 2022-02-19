@@ -4,7 +4,7 @@ function Logo(props) {
     width: '15%',
     maxWidth: '50px',
     overflow: 'hidden',
-    marginRight: '25px'
+    marginRight: '40px'
   }
 
   const imgStyles = {
