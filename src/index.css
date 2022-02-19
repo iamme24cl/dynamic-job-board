@@ -19,6 +19,11 @@ body {
   overflow-x: hidden;
   background-color: var(--global-background-color);
   font-size: 16px;
+  font-family: nunito,helvetica,Arial,sans-serif;
+}
+
+a {
+  text-decoration: none;
 }
 
 .blue {
