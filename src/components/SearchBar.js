@@ -18,7 +18,6 @@ function SearchBar(props) {
     padding: '18px',
     borderRadius: '30px',
     border: 'none',
-    width: '350px',
     fontSize: '18px'
   }
   
