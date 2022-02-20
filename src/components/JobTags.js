@@ -11,13 +11,11 @@ const JobTags = (props) => {
     padding: '5px 8px',
     borderRadius: '12px'
   }
-
-  const tags = props.tags.slice(0, 3)
-
+  const tags = props.tags.slice(0, 3);
   return (
     <div style={styles}>
       {tags.map(tag => {
-        return <span className="lg-screens-only" style={tagStyles}>{tag}</span>
+        return <span key={tag} className="lg-screens-only" style={tagStyles}>{tag}</span>
       })}
     </div>
   );

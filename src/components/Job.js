@@ -16,25 +16,25 @@ function Job(props) {
     marginBottom: '1px',
     display: 'flex',
     alignItems: 'center',
-    cursor: 'pointer',
     position: 'relative'
   }
 
+  const tags = Array.isArray(props.job.tags) ? props.job.tags : Object.values(props.job.tags);
+
   return (
     <>
-    <a href={`${props.job.apply_url}`} target="_blank">
       <div 
         style={styles} 
         className={`job ${randomColor}`}
         onMouseEnter={() => setShowApplyButton(true)}
-        onMouseLeave={() => setShowApplyButton(false)}
-      >
+        onMouseLeave={() => setShowApplyButton(false)}>
         <Logo job={props.job} />
-        <JobTitle job={props.job} />
-        <JobTags tags={props.job.tags} />
+        <a href={`${props.job.apply_url}`} target="_blank" rel="noreferrer">
+          <JobTitle job={props.job} />
+          </a>
+        <JobTags tags={tags} />
         {showApplyButton && <ApplyButton url={props.job.apply_url} />}
       </div>
-    </a>  
     </>
   );
 }
