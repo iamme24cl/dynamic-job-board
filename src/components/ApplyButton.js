@@ -1,3 +1,4 @@
+
 const ApplyButton = (props) => {
 
   const styles = {
@@ -10,12 +11,12 @@ const ApplyButton = (props) => {
     borderRadius: '12px',
     border: 'none',
     cursor: 'pointer',
-    color: 'black'
+    color: 'black',
   }
 
   return (
     <>
-      <a href={`${props.url}`} target="_blank" className="lg-screens-only" style={styles}>Apply</a>
+      <a href={`${props.url}`} target="_blank" rel="noreferrer" className="lg-screens-only" style={styles}>Apply</a>
     </>
   );
 }
