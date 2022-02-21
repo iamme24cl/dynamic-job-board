@@ -4,11 +4,13 @@ import { faAdd } from '@fortawesome/free-solid-svg-icons'
 
 
 const FilterBox = (props) => {
-  const [filters, setFilters] = useState([]);
+  const [filter, setFilter] = useState('');
 
   const styles = {
     margin: '20px 0 10px 10px',
-    position: 'relative'
+    position: 'relative',
+    display: 'flex',
+    alignItems: 'center'
   }
 
   const inputStyles = {
@@ -30,14 +32,41 @@ const FilterBox = (props) => {
     cursor: 'pointer'
   }
  
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      props.handleFilters(filter);
+      props.filterJobs();
+      setFilter("");
+    }
+  }
+
+  const handleClick = () => {
+    props.handleFilters(filter);
+    props.filterJobs();
+    setFilter("");
+  }
+
+  const handleOnBlur = () => {
+    setFilter("");
+    props.handleCloseFiltersList();
+  }
+  
   return (
     <div style={styles}>
       <input
         className='filter-input'
         style={inputStyles} 
         placeholder="Add Filter"
+        value={filter}
+        onChange={e => setFilter(e.target.value)}
+        onKeyPress={handleKeyPress}
+        onFocus={() => props.handleShowFiltersList()}
+        onBlur={handleOnBlur}
       />
-      <span className='add-filter-btn' style={iconStyles}><FontAwesomeIcon  icon={ faAdd } /></span>
+      <span onClick={handleClick} className='add-filter-btn' style={iconStyles}><FontAwesomeIcon  icon={ faAdd } /></span>
+      {props.filters.map(filter => {
+        return <span key={filter}>{filter}</span>;
+      })}
     </div>
   );
 }
