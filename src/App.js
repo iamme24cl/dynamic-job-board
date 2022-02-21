@@ -1,7 +1,7 @@
 import React from 'react';
-
 import Header from './components/Header';
 import JobList from './components/JobList';
+import FilterBox from './components/FilterBox';
 import './App.css';
 
 function App() {
@@ -39,6 +39,7 @@ function App() {
       <Header
         searchJobs={searchJobs}
       />
+      <FilterBox />
       <JobList jobs={jobs} />
     </div>
   )
