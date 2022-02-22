@@ -10,7 +10,7 @@ const FilterBox = (props) => {
     margin: '20px 0 10px 10px',
     position: 'relative',
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'center',
   }
 
   const inputStyles = {
@@ -29,7 +29,19 @@ const FilterBox = (props) => {
     position: 'absolute',
     left: '160px',
     bottom: '6px',
-    cursor: 'pointer'
+    cursor: 'pointer',
+
+  }
+
+  const filterStyles = {
+    margin: '10px',
+    padding: '10px 20px',
+    backgroundColor: '#fff',
+    boxShadow: '-10px 0px 13px -7px ',
+    borderRadius: '50px',
+    fontSize: '16px',
+    fontWeight: '800',
+    border: 'none'
   }
  
   const handleKeyPress = (e) => {
@@ -48,11 +60,15 @@ const FilterBox = (props) => {
 
   const handleOnBlur = () => {
     setFilter("");
-    props.handleCloseFiltersList();
+  }
+
+  const handleClearFilter = () => {
+    props.fetchJobs();
+    props.handleClearFilters();
   }
   
   return (
-    <div style={styles}>
+    <div className='filter-box' style={styles}>
       <input
         className='filter-input'
         style={inputStyles} 
@@ -62,11 +78,15 @@ const FilterBox = (props) => {
         onKeyPress={handleKeyPress}
         onFocus={() => props.handleShowFiltersList()}
         onBlur={handleOnBlur}
-      />
+      >
+      </input>
       <span onClick={handleClick} className='add-filter-btn' style={iconStyles}><FontAwesomeIcon  icon={ faAdd } /></span>
-      {props.filters.map(filter => {
-        return <span key={filter}>{filter}</span>;
-      })}
+      <div>
+        {props.filters.map(filter => {
+          return <span style={filterStyles} key={filter}>{filter}</span>;
+        })}
+        {props.filters.length > 0 && <span onClick={handleClearFilter} className='clear-btn' style={filterStyles}>Clear {props.jobs.length} results</span>}
+      </div>
     </div>
   );
 }

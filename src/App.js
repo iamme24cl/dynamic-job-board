@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import Header from './components/Header';
 import JobList from './components/JobList';
-import FilterBox from './components/FilterBox';
-import FilterList from './components/FilterList';
 import './App.css';
 
 function App() {
@@ -56,7 +54,7 @@ function App() {
   }
   
   const handleCloseFiltersList = () => {
-    // setShowFiltersList(false);
+    setShowFiltersList(false);
   }
 
   const handleFilters = (val) => {
@@ -65,20 +63,26 @@ function App() {
     setFilters(filtersCopy);
   }
 
+  const handleClearFilters = () => {
+    setFilters([]);
+  }
+
   return (
     <div>
       <Header
         searchJobs={searchJobs}
       />
-      <FilterBox 
+      <JobList
+        fetchJobs={fetchJobs}
+        handleClearFilters={handleClearFilters}
         handleShowFiltersList={handleShowFiltersList}  
         handleCloseFiltersList={handleCloseFiltersList}
         handleFilters={handleFilters}
         filterJobs={filterJobs}
         filters={filters}
+        jobs={jobs} 
+        showFiltersList={showFiltersList}
       />
-      {showFiltersList && <FilterList filterJobs={filterJobs} handleFilters={handleFilters} />}
-      <JobList jobs={jobs} />
     </div>
   )
 }
