@@ -83,9 +83,9 @@ const FilterBox = (props) => {
       <span onClick={handleClick} className='add-filter-btn' style={iconStyles}><FontAwesomeIcon  icon={ faAdd } /></span>
       <div>
         {props.filters.map(filter => {
-          return <span style={filterStyles} key={filter}>{filter}</span>;
+          return <span className='filter-tags'  style={filterStyles} key={filter}>{filter}</span>;
         })}
-        {props.filters.length > 0 && <span onClick={handleClearFilter} className='clear-btn' style={filterStyles}>Clear {props.jobs.length} results</span>}
+        {props.filters.length > 0 && <span onClick={handleClearFilter} className='clear-btn'>Clear {props.jobs.length} results</span>}
       </div>
     </div>
   );

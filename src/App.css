@@ -40,11 +40,36 @@
   color: black;
 }
 
+.clear-btn {
+  margin: 10px;
+  padding: 10px 20px;
+  background-color: #fff;
+  box-shadow: -10px 0px 13px -7px ;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 800;
+  border: none;
+}
+
 .lg-screens-only {
   display: none;
 }
 
+
 /* Media Queries */
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .filter-tags {
+    display: none;
+  }
+
+  .clear-btn {
+    font-size: 14px;
+    padding: 0;
+    box-shadow: none;
+  }
+}
+
 @media only screen and (min-width: 1200px) {
   .job {
     border-radius: 10px;
