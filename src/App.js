@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './components/Header';
 import JobList from './components/JobList';
-import FilterBox from './components/FilterBox';
 import './App.css';
 
 function App() {
-  const [jobs, setJobs] = React.useState([]);
+  const [jobs, setJobs] = useState([]);
+  const [filters, setFilters] = useState([]);
+  const [showFiltersList, setShowFiltersList] = useState(false);
   
   const fetchJobs = async () => {
     try {
@@ -33,14 +34,55 @@ function App() {
       console.error(error);
     }
   }
+
+  const filterJobs = async () => {
+    const tags = filters.join(",")
+    try {
+      const response = await fetch(`https://remoteok.com/api?tags=${tags}`);
+      const jsonData = await response.json();
+      const data = jsonData.slice(1);
+      setJobs(data);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setShowFiltersList(false)
+    }
+  }
+
+  const handleShowFiltersList = () => {
+    setShowFiltersList(true);
+  }
   
+  const handleCloseFiltersList = () => {
+    setShowFiltersList(false);
+  }
+
+  const handleFilters = (val) => {
+    let filtersCopy = [ ...filters ];
+    filtersCopy.push(val);
+    setFilters(filtersCopy);
+  }
+
+  const handleClearFilters = () => {
+    setFilters([]);
+  }
+
   return (
     <div>
       <Header
         searchJobs={searchJobs}
       />
-      <FilterBox />
-      <JobList jobs={jobs} />
+      <JobList
+        fetchJobs={fetchJobs}
+        handleClearFilters={handleClearFilters}
+        handleShowFiltersList={handleShowFiltersList}  
+        handleCloseFiltersList={handleCloseFiltersList}
+        handleFilters={handleFilters}
+        filterJobs={filterJobs}
+        filters={filters}
+        jobs={jobs} 
+        showFiltersList={showFiltersList}
+      />
     </div>
   )
 }

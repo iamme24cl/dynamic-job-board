@@ -27,6 +27,11 @@
   background-color: brown;
 }
 
+.clear-btn {
+  color: red;
+  cursor: pointer;
+}
+
 .job {
   color: white; 
 }
